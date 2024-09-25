@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx --watch --env-file=.env src/index.ts",
-    "start": "tsc --build && tsx src/index.ts",
+    "build": "tsc --build && tsx src/index.ts",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "typecheck": "tsc --noEmit"
   },
@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.20.0",
     "cors": "^2.8.5",
-    "express": "^4.21.0"
+    "express": "^4.21.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
@@ -24,6 +26,7 @@
     "eslint": "^9.11.1",
     "eslint-plugin-react": "^7.36.1",
     "globals": "^15.9.0",
+    "prisma": "^5.20.0",
     "tsx": "^4.19.1",
     "typescript": "5.5.x",
     "typescript-eslint": "^8.7.0"
