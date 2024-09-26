@@ -1,0 +1,175 @@
+openapi: 3.1.0
+info:
+  title: Event Management System
+  description: API documentation for the Event Management System
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/
+
+tags:
+  - name: events
+    description: Endpoints for working with events
+
+components:
+  schemas:
+    UpdateEvent:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the event
+          example: "Birthday Party"
+        description:
+          type: string
+          description: Description of the event
+          example: "A fun party with friends and family"
+        from:
+          type: string
+          format: date-time
+          description: Start date & time of the event (YYYY-MM-DDTHH:mm:ss.sssZ format)
+          example: "2022-01-01T18:00:00Z"
+        to:
+          type: string
+          format: date-time
+          description: End date & time of the event (YYYY-MM-DDTHH:mm:ss.sssZ format)
+          example: "2022-01-01T22:00:00Z"
+    CreateEvent:
+      allOf:
+        - $ref: "#/components/schemas/UpdateEvent"
+        - type: object
+          required:
+            - name
+            - from
+            - to
+
+    EventResponse:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              description: Event ID
+              example: 1
+            createdAt:
+              type: string
+              format: date-time
+              description: When the event was created (YYYY-MM-DDTHH:mm:ss.sssZ format)
+              example: "2022-01-01T22:00:00Z"
+            updatedAt:
+              type: string
+              format: date-time
+              description: When the event was last updated (YYYY-MM-DDTHH:mm:ss.sssZ format)
+              example: "2022-01-01T22:00:00Z"
+        - $ref: "#/components/schemas/UpdateEvent"
+      required:
+        - id
+        - name
+        - from
+        - to
+        - createdAt
+        - updatedAt
+
+paths:
+  /events:
+    get:
+      summary: Retrieve all events
+      tags:
+        - events
+      responses:
+        "200":
+          description: A list of events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EventFromDb"
+
+    post:
+      summary: Create a new event
+      tags:
+        - events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateEvent"
+      responses:
+        "201":
+          description: Event created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventFromDb"
+        "400":
+          description: Invalid data provided
+
+  /events/{id}:
+    get:
+      summary: Get a single event by ID
+      tags:
+        - events
+      parameters:
+        - name: id
+          description: ID of the event to retrieve
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Event retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventFromDb"
+        "404":
+          description: Event not found
+
+    put:
+      summary: Update an event by ID
+      tags:
+        - events
+      parameters:
+        - name: id
+          description: ID of the event to update
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateEvent"
+      responses:
+        "200":
+          description: Event updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventFromDb"
+        "400":
+          description: Invalid data provided
+        "404":
+          description: Event not found
+
+    delete:
+      summary: Delete an event by ID
+      tags:
+        - events
+      parameters:
+        - name: id
+          description: ID of the event to delete
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Event deleted successfully
+        "404":
+          description: Event not found

@@ -101,3 +101,7 @@ After this, you should be able to access the backend API at [http://localhost:30
 ### Production-Specific Scripts
 * `npm run build` -> Build the application for production.
 * `npm run preview` -> Preview the production build of the frontend.
+
+## Using the Backend API & OpenAPI Documentation
+
+The Event Management System backend provides a __RESTful API__ for interacting with events data. It supports all __CRUD__ (Create, Read, Update, Delete) operations for events. The API follows standard RESTful principles and is documented using __OpenAPI 3.1.0__. You can access the OpenAPI documentation, which describes the available endpoints, request parameters, response formats, and expected error codes. This documentation can be used for testing and integrating the API with other services. To view and interact with the API documentation, start the backend server and navigate to `/api-docs` in your browser (e.g., [http://localhost:3001/api-docs](http://localhost:3000/api-docs). The documentation interface allows you to test endpoints directly from the browser, helping with debugging and development.
