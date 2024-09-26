@@ -37,7 +37,7 @@ If you followed the [General Setup](#general-setup-development--production) cont
 In the __backend__ apply database migrations and generate the Prisma client:
 
 ```bash
-npx prisma migrate dev --name init
+npm run migrate:up --name init
 npx prisma generate
 ```
 
@@ -55,6 +55,11 @@ You can run these scripts in both Frontend & Backend directories:
 * `npm run dev` -> Run the server in development mode (with hot reloading).
 * `npm run lint` -> Lint files using ESLint to enforce code quality standards.
 * `npm run typecheck` -> Perform TypeScript type checking to ensure type safety.
+
+### Migration Scripts
+You can run these scripts in the Backend directory:
+* `npm run migrate:up --name <migration-name>` -> Apply a new migration.
+* `npm run migrate:reset` -> Reset the database and reapply all migrations.
 
 ## Production Environment Setup
 If you followed the [General Setup](#general-setup-development--production) continue with the steps below.

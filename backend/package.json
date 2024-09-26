@@ -7,10 +7,14 @@
     "dev": "tsx --watch --env-file=.env src/index.ts",
     "build": "tsc --build && tsx src/index.ts",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "migrate:up": "prisma migrate dev",
+    "migrate:reset": "prisma migrate reset",
+    "db:seed": "tsx seed/seed.ts",
+    "db:look": "prisma studio"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tom Vejmelka",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.20.0",
