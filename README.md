@@ -56,10 +56,12 @@ You can run these scripts in both Frontend & Backend directories:
 * `npm run lint` -> Lint files using ESLint to enforce code quality standards.
 * `npm run typecheck` -> Perform TypeScript type checking to ensure type safety.
 
-### Migration Scripts
+### Migration and Database Scripts
 You can run these scripts in the Backend directory:
 * `npm run migrate:up --name <migration-name>` -> Apply a new migration.
 * `npm run migrate:reset` -> Reset the database and reapply all migrations.
+* `npm run db:look` -> Open the Prisma Studio to view and manage the database.
+* `npm run db:seed` -> Seed the database with sample data.
 
 ## Production Environment Setup
 If you followed the [General Setup](#general-setup-development--production) continue with the steps below.
