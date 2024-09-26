@@ -17,6 +17,7 @@
   "author": "Tom Vejmelka",
   "license": "ISC",
   "dependencies": {
+    "@badrap/result": "^0.2.13",
     "@prisma/client": "^5.20.0",
     "cors": "^2.8.5",
     "express": "^4.21.0",
