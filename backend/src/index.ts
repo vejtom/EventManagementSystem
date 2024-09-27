@@ -1,5 +1,5 @@
 import express from 'express';
-import cors from "cors";
+import cors from 'cors';
 import { eventRouter } from './events/router';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
@@ -20,7 +20,7 @@ const swaggerDocument = YAML.load(path.resolve(__dirname, '../api-documentation/
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // custom routes
-app.use('/events', eventRouter)
+app.use('/events', eventRouter);
 
 // No route found
 app.use((_req, res) => {

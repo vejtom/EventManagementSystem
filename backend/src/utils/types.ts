@@ -1,4 +1,4 @@
-import type { Result } from "@badrap/result";
+import type { Result } from '@badrap/result';
 
 /**
  * A generic type that used to type the return value

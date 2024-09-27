@@ -14,11 +14,11 @@ interface PrismaError extends Error {
  * @returns True if the error is a PrismaError, otherwise false
  */
 const isPrismaError = (error: unknown): error is PrismaError => {
-    return (
-        typeof error === 'object' &&
+  return (
+    typeof error === 'object' &&
         error !== null &&
         'code' in error
-    );
+  );
 };
 
 export default isPrismaError;
