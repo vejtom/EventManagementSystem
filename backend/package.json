@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx --watch --env-file=.env src/index.ts",
     "build": "tsc --build && tsx src/index.ts",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0 --fix",
     "typecheck": "tsc --noEmit",
     "migrate:up": "prisma migrate dev",
     "migrate:reset": "prisma migrate reset",
