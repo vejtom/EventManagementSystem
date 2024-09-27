@@ -37,7 +37,7 @@ If you followed the [General Setup](#general-setup-development--production) cont
 In the __backend__ apply database migrations and generate the Prisma client:
 
 ```bash
-npm run migrate:up --name init
+npx prisma migrate dev --name init
 npx prisma generate
 ```
 
@@ -58,7 +58,7 @@ You can run these scripts in both Frontend & Backend directories:
 
 ### Migration and Database Scripts
 You can run these scripts in the Backend directory:
-* `npm run migrate:up --name <migration-name>` -> Apply a new migration.
+* `npm run migrate:up` -> Apply a new migration.
 * `npm run migrate:reset` -> Reset the database and reapply all migrations.
 * `npm run db:look` -> Open the Prisma Studio to view and manage the database.
 * `npm run db:seed` -> Seed the database with sample data.
