@@ -70,6 +70,26 @@ components:
         - createdAt
         - updatedAt
 
+    SingleEventResponse:
+      type: object
+      properties:
+        item:
+          $ref: "#/components/schemas/EventResponse"
+      required:
+        - item
+      description: Response containing a single event in `item` object
+
+    MultipleEventsResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/EventResponse"
+      required:
+        - items
+      description: Response containing multiple events in `items` array
+
 paths:
   /events:
     get:
@@ -84,7 +104,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/EventResponse"
+                  $ref: "#/components/schemas/MultipleEventsResponse"
 
     post:
       summary: Create a new event
@@ -124,7 +144,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EventResponse"
+                $ref: "#/components/schemas/SingleEventResponse"
         "404":
           description: Event not found
 

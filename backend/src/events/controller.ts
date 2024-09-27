@@ -14,7 +14,7 @@ const getEvents = async (req: Request, res: Response) => {
     return;
   }
 
-  res.status(200).json(result.value);
+  res.status(200).json({items: result.value});
 };
 
 // Controller to get an event by its ID
@@ -30,7 +30,7 @@ const getEventById = async (req: Request, res: Response) => {
     return;
   }
 
-  res.status(200).json(result.value);
+  res.status(200).json({item: result.value});
 };
 
 // Controller to create an event
