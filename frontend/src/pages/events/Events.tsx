@@ -52,6 +52,7 @@ export const Events = () => {
           type="secondary"
           label="Add New Event"
           to="/create-event"
+          size="medium"
           icon={PlusIcon}
         />
       </header>

@@ -32,22 +32,24 @@ const EventsTable: FC<EventsTableProps> = ({ data = [] }) => {
               <td className="py-2 px-4">
                 {new Date(event.to).toLocaleString()}
               </td>
-              <td className="py-2 px-4 flex space-x-2">
-                <Button
-                  type="secondary"
-                  label="View"
-                  to={`/events/${event.id}/view`} // Navigate to view page
-                />
-                <Button
-                  type="secondary"
-                  label="Edit"
-                  to={`/events/${event.id}/edit`} // Navigate to edit page
-                />
-                <Button
-                  type="secondary"
-                  label="Delete"
-                  to={`/events/${event.id}/delete`} // Navigate to delete page
-                />
+              <td className="py-2 px-4">
+                <div className="flex space-x-2">
+                  <Button
+                    type="secondary"
+                    label="View"
+                    to={`/events/${event.id}/view`} // Navigate to view page
+                  />
+                  <Button
+                    type="secondary"
+                    label="Edit"
+                    to={`/events/${event.id}/edit`} // Navigate to edit page
+                  />
+                  <Button
+                    type="secondary"
+                    label="Delete"
+                    to={`/events/${event.id}/delete`} // Navigate to delete page
+                  />
+                </div>
               </td>
             </tr>
           ))}

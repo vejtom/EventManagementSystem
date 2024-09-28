@@ -15,7 +15,6 @@ export const useEvents = (page: number):
     queryKey: [queryKeys.events, page],
     queryFn: async () => {
       const response: ApiRespMultiPaginated<Event> = await eventsApi.getAllPaginated({ page });
-      console.log('API response:', response);
       return response;
     },
   });

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEvent } from '../../hooks/useEvents';
 import { Button } from '../../components/general/Button';
 import Input from '../../components/general/Input';
+import { formatDateForInput } from '../../utils/date-util';
 
 const ViewEvent = () => {
   const { id } = useParams<{ id: string }>();
@@ -59,7 +60,7 @@ const ViewEvent = () => {
             id="from"
             label="From Date & Time"
             type="datetime-local"
-            value={new Date(event.item.from).toISOString().slice(0, 16)}
+            value={formatDateForInput(new Date(event.item.from))}
             readOnly={true}
           />
         </div>
@@ -68,7 +69,7 @@ const ViewEvent = () => {
             id="to"
             label="To Date & Time"
             type="datetime-local"
-            value={new Date(event.item.to).toISOString().slice(0, 16)}
+            value={formatDateForInput(new Date(event.item.to))}
             readOnly={true}
           />
         </div>
@@ -76,7 +77,7 @@ const ViewEvent = () => {
 
       {/* Back Button */}
       <div className="mt-6">
-        <Button type="secondary" label="Back to Events" onClick={() => navigate('/')} />
+        <Button type="secondary" label="Back to Events" onClick={() => navigate('/')} size="large" />
       </div>
     </div>
   );

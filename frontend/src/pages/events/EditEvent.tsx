@@ -6,15 +6,7 @@ import { Button } from '../../components/general/Button';
 import Input from '../../components/general/Input';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-
-const formatDateForInput = (date: Date) => {
-  if (!date || isNaN(new Date(date).getTime())) {
-    return '';
-  }
-
-  return new Date(date).toISOString().split('.')[0];
-};
-
+import { formatDateForInput } from '../../utils/date-util';
 
 const editEventSchema = z
   .object({
@@ -80,8 +72,8 @@ export const EditEvent = () => {
     if (event) {
       setValue('name', event.item.name);
       setValue('description', event.item.description || '');
-      setValue('from', formatDateForInput(event.item.from));
-      setValue('to', formatDateForInput(event.item.to));
+      setValue('from', formatDateForInput(new Date(event.item.from)));
+      setValue('to', formatDateForInput(new Date(event.item.to)));
     }
   }, [event, setValue]); // Use effect to only run when event is fetched
   const onSubmit = (data: EditEventFormData) => {
